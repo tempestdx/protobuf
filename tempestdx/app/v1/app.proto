@@ -1,0 +1,223 @@
+syntax = "proto3";
+
+package tempestdx.app.v1;
+
+import "google/protobuf/struct.proto";
+
+service AppService {
+  // Returns information about what the app supports.
+  rpc Describe(DescribeRequest) returns (DescribeResponse) {}
+
+  // Health check endpoint
+  rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse) {}
+
+  // Methods for executing operations on Resources.
+  // Create, Read, Update, or Delete a Resource.
+  rpc ExecuteResourceOperation(ExecuteResourceOperationRequest) returns (ExecuteResourceOperationResponse) {}
+
+  // List Resources of a given type in the external system.
+  rpc ListResources(ListResourcesRequest) returns (ListResourcesResponse) {}
+
+  // Execute an action on a Resource, as defined by the app.
+  rpc ExecuteResourceAction(ExecuteResourceActionRequest) returns (ExecuteResourceActionResponse) {}
+}
+
+message DescribeRequest {}
+message DescribeResponse {
+  // The Resources managed by the app.
+  repeated ResourceDefinition resource_definitions = 1;
+}
+
+message HealthCheckRequest {
+  // The type of resource to health check.
+  string type = 1;
+}
+
+enum HealthCheckStatus {
+  HEALTH_CHECK_STATUS_UNSPECIFIED = 0;
+  HEALTH_CHECK_STATUS_HEALTHY = 1;
+  HEALTH_CHECK_STATUS_DEGRADED = 2;
+  HEALTH_CHECK_STATUS_DISRUPTED = 3;
+}
+
+message HealthCheckResponse {
+  // The status of the health check.
+  HealthCheckStatus status = 1;
+  // A message describing the health check status.
+  string message = 2;
+}
+
+enum LinkType {
+  LINK_TYPE_UNSPECIFIED = 0;
+  LINK_TYPE_DOCUMENTATION = 1;
+  LINK_TYPE_ADMINISTRATION = 2;
+  LINK_TYPE_SUPPORT = 3;
+  LINK_TYPE_ENDPOINT = 4;
+  LINK_TYPE_EXTERNAL = 5;
+}
+
+message Link {
+  string url = 1;
+  string title = 2;
+  LinkType type = 3;
+}
+
+enum LifecycleStage {
+  LIFECYCLE_STAGE_UNSPECIFIED = 0;
+  LIFECYCLE_STAGE_CODE = 1;
+  LIFECYCLE_STAGE_BUILD = 2;
+  LIFECYCLE_STAGE_TEST = 3;
+  LIFECYCLE_STAGE_RELEASE = 4;
+  LIFECYCLE_STAGE_DEPLOY = 5;
+  LIFECYCLE_STAGE_OPERATE = 6;
+  LIFECYCLE_STAGE_MONITOR = 7;
+  LIFECYCLE_STAGE_OTHER = 8;
+}
+
+message ActionDefinition {
+  // The unique name of the action.
+  string name = 1;
+  // The human-readable display name of the action.
+  string display_name = 2;
+  // A description of what the action does.
+  string description = 3;
+  // The input schema for the action.
+  google.protobuf.Struct input_schema = 4;
+  // The output schema for the action.
+  google.protobuf.Struct output_schema = 5;
+}
+
+message ResourceDefinition {
+  // The unique type of the resource.
+  string type = 1;
+  // The human-readable display name of the resource.
+  string display_name = 2;
+  // A description of what the resource definition represents in the external system.
+  string description = 3;
+  // The schema for the properties of the resource. The result of CREATE, READ, UPDATE, and LIST
+  // will be validated against this schema.
+  google.protobuf.Struct properties_schema = 4;
+  // Indicates if the Resource supports the LIST operation.
+  bool list_supported = 5;
+  // Indicates if the Resource supports the READ operation.
+  bool read_supported = 6;
+  // Indicates if the Resource supports the CREATE operation.
+  bool create_supported = 7;
+  // The schema for the input of the CREATE operation. This will be validated against
+  // the user's input before the operation is executed.
+  google.protobuf.Struct create_input_schema = 8;
+  // Indicates if the Resource supports the UPDATE operation.
+  bool update_supported = 9;
+  // The schema for the input of the UPDATE operation. This will be validated against
+  // the user's input before the operation is executed.
+  google.protobuf.Struct update_input_schema = 10;
+  // Indicates if the Resource supports the DELETE operation.
+  bool delete_supported = 11;
+  // Actions that can be taken on this Resource on demand.
+  repeated ActionDefinition actions = 12;
+  // The lifecycle stage of this Resource. This is used to help users understand
+  // the entire picture of the software lifecycle of their Tempest-managed systems.
+  LifecycleStage lifecycle_stage = 13;
+  // Links to documentation, administration, support, or other resources.
+  repeated Link links = 14;
+  // Markdown formatted instructions for setting up or using the Resource.
+  // This field supports resource property variables in the format of {{ resource.<property name> }}.
+  string instructions_markdown = 15;
+  // Indicates if the Resource supports healthchecks.
+  bool healthcheck_supported = 16;
+}
+
+message Metadata {
+  // The ID of the project that initiated the request.
+  string project_id = 1;
+  // The name of the project that initiated the request.
+  string project_name = 2;
+  // The Owners associated with the project.
+  repeated Owner owners = 3;
+  // The author of the request.
+  Owner author = 4;
+}
+
+enum OwnerType {
+  OWNER_TYPE_UNSPECIFIED = 0;
+  OWNER_TYPE_USER = 1;
+  OWNER_TYPE_TEAM = 2;
+}
+
+message Owner {
+  // The owner's email address.
+  string email = 1;
+  // The owner's name.
+  string name = 2;
+  // The type of owner.
+  OwnerType type = 3;
+}
+
+enum ResourceOperation {
+  RESOURCE_OPERATION_UNSPECIFIED = 0;
+  RESOURCE_OPERATION_CREATE = 1;
+  RESOURCE_OPERATION_UPDATE = 2;
+  RESOURCE_OPERATION_DELETE = 3;
+  RESOURCE_OPERATION_READ = 4;
+}
+
+message Resource {
+  // The unique type of the resource.
+  string type = 1;
+  // The unique ID of the resource in the external system.
+  string external_id = 2;
+  // The human-readable display name of the resource.
+  string display_name = 3;
+  // Links specific to this Resource instance.
+  repeated Link links = 4;
+  // The properties of the resource. This will be validated against the
+  // properties_schema of the ResourceDefinition.
+  google.protobuf.Struct properties = 5;
+}
+
+message ExecuteResourceOperationRequest {
+  // Tempest metadata about the request.
+  Metadata metadata = 1;
+  // The Resource to operate on, if any.
+  Resource resource = 2;
+  // The operation to perform.
+  ResourceOperation operation = 3;
+  // The input for the operation, if any.
+  google.protobuf.Struct input = 4;
+}
+
+message ExecuteResourceOperationResponse {
+  // The Resource that was operated on.
+  Resource resource = 1;
+}
+
+message ExecuteResourceActionRequest {
+  // Tempest metadata about the request.
+  Metadata metadata = 1;
+  // The Resource related to the action. This may only be the type of the Resource.
+  Resource resource = 2;
+  // The name of the action to execute
+  string action = 3;
+  // The input for the action, if any.
+  google.protobuf.Struct input = 4;
+}
+
+message ExecuteResourceActionResponse {
+  // The output of the action, if any.
+  google.protobuf.Struct output = 1;
+}
+
+message ListResourcesRequest {
+  Metadata metadata = 1;
+  // The type of resource to list.
+  Resource resource = 2;
+  // The next page token, if any.
+  string next = 3;
+}
+
+message ListResourcesResponse {
+  // The Resources of the given type.
+  repeated Resource resources = 1;
+  // The next page token, if any.
+  string next = 2;
+}

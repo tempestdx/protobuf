@@ -1,0 +1,1281 @@
+{
+  "files": [
+    {
+      "name": "tempestdx/app/v1/app.proto",
+      "description": "",
+      "package": "tempestdx.app.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "HealthCheckStatus",
+          "longName": "HealthCheckStatus",
+          "fullName": "tempestdx.app.v1.HealthCheckStatus",
+          "description": "",
+          "values": [
+            {
+              "name": "HEALTH_CHECK_STATUS_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "HEALTH_CHECK_STATUS_HEALTHY",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "HEALTH_CHECK_STATUS_DEGRADED",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "HEALTH_CHECK_STATUS_DISRUPTED",
+              "number": "3",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "LifecycleStage",
+          "longName": "LifecycleStage",
+          "fullName": "tempestdx.app.v1.LifecycleStage",
+          "description": "",
+          "values": [
+            {
+              "name": "LIFECYCLE_STAGE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "LIFECYCLE_STAGE_CODE",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "LIFECYCLE_STAGE_BUILD",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "LIFECYCLE_STAGE_TEST",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "LIFECYCLE_STAGE_RELEASE",
+              "number": "4",
+              "description": ""
+            },
+            {
+              "name": "LIFECYCLE_STAGE_DEPLOY",
+              "number": "5",
+              "description": ""
+            },
+            {
+              "name": "LIFECYCLE_STAGE_OPERATE",
+              "number": "6",
+              "description": ""
+            },
+            {
+              "name": "LIFECYCLE_STAGE_MONITOR",
+              "number": "7",
+              "description": ""
+            },
+            {
+              "name": "LIFECYCLE_STAGE_OTHER",
+              "number": "8",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "LinkType",
+          "longName": "LinkType",
+          "fullName": "tempestdx.app.v1.LinkType",
+          "description": "",
+          "values": [
+            {
+              "name": "LINK_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "LINK_TYPE_DOCUMENTATION",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "LINK_TYPE_ADMINISTRATION",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "LINK_TYPE_SUPPORT",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "LINK_TYPE_ENDPOINT",
+              "number": "4",
+              "description": ""
+            },
+            {
+              "name": "LINK_TYPE_EXTERNAL",
+              "number": "5",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "OwnerType",
+          "longName": "OwnerType",
+          "fullName": "tempestdx.app.v1.OwnerType",
+          "description": "",
+          "values": [
+            {
+              "name": "OWNER_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "OWNER_TYPE_USER",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "OWNER_TYPE_TEAM",
+              "number": "2",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "name": "ResourceOperation",
+          "longName": "ResourceOperation",
+          "fullName": "tempestdx.app.v1.ResourceOperation",
+          "description": "",
+          "values": [
+            {
+              "name": "RESOURCE_OPERATION_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "RESOURCE_OPERATION_CREATE",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "RESOURCE_OPERATION_UPDATE",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "RESOURCE_OPERATION_DELETE",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "RESOURCE_OPERATION_READ",
+              "number": "4",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "ActionDefinition",
+          "longName": "ActionDefinition",
+          "fullName": "tempestdx.app.v1.ActionDefinition",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "The unique name of the action.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "display_name",
+              "description": "The human-readable display name of the action.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "A description of what the action does.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "input_schema",
+              "description": "The input schema for the action.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "output_schema",
+              "description": "The output schema for the action.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DescribeRequest",
+          "longName": "DescribeRequest",
+          "fullName": "tempestdx.app.v1.DescribeRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "DescribeResponse",
+          "longName": "DescribeResponse",
+          "fullName": "tempestdx.app.v1.DescribeResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "resource_definitions",
+              "description": "The Resources managed by the app.",
+              "label": "repeated",
+              "type": "ResourceDefinition",
+              "longType": "ResourceDefinition",
+              "fullType": "tempestdx.app.v1.ResourceDefinition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ExecuteResourceActionRequest",
+          "longName": "ExecuteResourceActionRequest",
+          "fullName": "tempestdx.app.v1.ExecuteResourceActionRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "metadata",
+              "description": "Tempest metadata about the request.",
+              "label": "",
+              "type": "Metadata",
+              "longType": "Metadata",
+              "fullType": "tempestdx.app.v1.Metadata",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "resource",
+              "description": "The Resource related to the action. This may only be the type of the Resource.",
+              "label": "",
+              "type": "Resource",
+              "longType": "Resource",
+              "fullType": "tempestdx.app.v1.Resource",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "action",
+              "description": "The name of the action to execute",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "input",
+              "description": "The input for the action, if any.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ExecuteResourceActionResponse",
+          "longName": "ExecuteResourceActionResponse",
+          "fullName": "tempestdx.app.v1.ExecuteResourceActionResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "output",
+              "description": "The output of the action, if any.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ExecuteResourceOperationRequest",
+          "longName": "ExecuteResourceOperationRequest",
+          "fullName": "tempestdx.app.v1.ExecuteResourceOperationRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "metadata",
+              "description": "Tempest metadata about the request.",
+              "label": "",
+              "type": "Metadata",
+              "longType": "Metadata",
+              "fullType": "tempestdx.app.v1.Metadata",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "resource",
+              "description": "The Resource to operate on, if any.",
+              "label": "",
+              "type": "Resource",
+              "longType": "Resource",
+              "fullType": "tempestdx.app.v1.Resource",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "operation",
+              "description": "The operation to perform.",
+              "label": "",
+              "type": "ResourceOperation",
+              "longType": "ResourceOperation",
+              "fullType": "tempestdx.app.v1.ResourceOperation",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "input",
+              "description": "The input for the operation, if any.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ExecuteResourceOperationResponse",
+          "longName": "ExecuteResourceOperationResponse",
+          "fullName": "tempestdx.app.v1.ExecuteResourceOperationResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "resource",
+              "description": "The Resource that was operated on.",
+              "label": "",
+              "type": "Resource",
+              "longType": "Resource",
+              "fullType": "tempestdx.app.v1.Resource",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "HealthCheckRequest",
+          "longName": "HealthCheckRequest",
+          "fullName": "tempestdx.app.v1.HealthCheckRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "type",
+              "description": "The type of resource to health check.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "HealthCheckResponse",
+          "longName": "HealthCheckResponse",
+          "fullName": "tempestdx.app.v1.HealthCheckResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "status",
+              "description": "The status of the health check.",
+              "label": "",
+              "type": "HealthCheckStatus",
+              "longType": "HealthCheckStatus",
+              "fullType": "tempestdx.app.v1.HealthCheckStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "message",
+              "description": "A message describing the health check status.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Link",
+          "longName": "Link",
+          "fullName": "tempestdx.app.v1.Link",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "url",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "title",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "type",
+              "description": "",
+              "label": "",
+              "type": "LinkType",
+              "longType": "LinkType",
+              "fullType": "tempestdx.app.v1.LinkType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ListResourcesRequest",
+          "longName": "ListResourcesRequest",
+          "fullName": "tempestdx.app.v1.ListResourcesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "metadata",
+              "description": "",
+              "label": "",
+              "type": "Metadata",
+              "longType": "Metadata",
+              "fullType": "tempestdx.app.v1.Metadata",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "resource",
+              "description": "The type of resource to list.",
+              "label": "",
+              "type": "Resource",
+              "longType": "Resource",
+              "fullType": "tempestdx.app.v1.Resource",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "next",
+              "description": "The next page token, if any.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ListResourcesResponse",
+          "longName": "ListResourcesResponse",
+          "fullName": "tempestdx.app.v1.ListResourcesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "resources",
+              "description": "The Resources of the given type.",
+              "label": "repeated",
+              "type": "Resource",
+              "longType": "Resource",
+              "fullType": "tempestdx.app.v1.Resource",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "next",
+              "description": "The next page token, if any.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Metadata",
+          "longName": "Metadata",
+          "fullName": "tempestdx.app.v1.Metadata",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "project_id",
+              "description": "The ID of the project that initiated the request.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "project_name",
+              "description": "The name of the project that initiated the request.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "owners",
+              "description": "The Owners associated with the project.",
+              "label": "repeated",
+              "type": "Owner",
+              "longType": "Owner",
+              "fullType": "tempestdx.app.v1.Owner",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "author",
+              "description": "The author of the request.",
+              "label": "",
+              "type": "Owner",
+              "longType": "Owner",
+              "fullType": "tempestdx.app.v1.Owner",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Owner",
+          "longName": "Owner",
+          "fullName": "tempestdx.app.v1.Owner",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "email",
+              "description": "The owner's email address.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "The owner's name.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "type",
+              "description": "The type of owner.",
+              "label": "",
+              "type": "OwnerType",
+              "longType": "OwnerType",
+              "fullType": "tempestdx.app.v1.OwnerType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Resource",
+          "longName": "Resource",
+          "fullName": "tempestdx.app.v1.Resource",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "type",
+              "description": "The unique type of the resource.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "external_id",
+              "description": "The unique ID of the resource in the external system.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "display_name",
+              "description": "The human-readable display name of the resource.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "links",
+              "description": "Links specific to this Resource instance.",
+              "label": "repeated",
+              "type": "Link",
+              "longType": "Link",
+              "fullType": "tempestdx.app.v1.Link",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "properties",
+              "description": "The properties of the resource. This will be validated against the\nproperties_schema of the ResourceDefinition.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ResourceDefinition",
+          "longName": "ResourceDefinition",
+          "fullName": "tempestdx.app.v1.ResourceDefinition",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "type",
+              "description": "The unique type of the resource.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "display_name",
+              "description": "The human-readable display name of the resource.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "A description of what the resource definition represents in the external system.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "properties_schema",
+              "description": "The schema for the properties of the resource. The result of CREATE, READ, UPDATE, and LIST\nwill be validated against this schema.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "list_supported",
+              "description": "Indicates if the Resource supports the LIST operation.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "read_supported",
+              "description": "Indicates if the Resource supports the READ operation.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "create_supported",
+              "description": "Indicates if the Resource supports the CREATE operation.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "create_input_schema",
+              "description": "The schema for the input of the CREATE operation. This will be validated against\nthe user's input before the operation is executed.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "update_supported",
+              "description": "Indicates if the Resource supports the UPDATE operation.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "update_input_schema",
+              "description": "The schema for the input of the UPDATE operation. This will be validated against\nthe user's input before the operation is executed.",
+              "label": "",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "delete_supported",
+              "description": "Indicates if the Resource supports the DELETE operation.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "actions",
+              "description": "Actions that can be taken on this Resource on demand.",
+              "label": "repeated",
+              "type": "ActionDefinition",
+              "longType": "ActionDefinition",
+              "fullType": "tempestdx.app.v1.ActionDefinition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "lifecycle_stage",
+              "description": "The lifecycle stage of this Resource. This is used to help users understand\nthe entire picture of the software lifecycle of their Tempest-managed systems.",
+              "label": "",
+              "type": "LifecycleStage",
+              "longType": "LifecycleStage",
+              "fullType": "tempestdx.app.v1.LifecycleStage",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "links",
+              "description": "Links to documentation, administration, support, or other resources.",
+              "label": "repeated",
+              "type": "Link",
+              "longType": "Link",
+              "fullType": "tempestdx.app.v1.Link",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "instructions_markdown",
+              "description": "Markdown formatted instructions for setting up or using the Resource.\nThis field supports resource property variables in the format of {{ resource.\u003cproperty name\u003e }}.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "healthcheck_supported",
+              "description": "Indicates if the Resource supports healthchecks.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "AppService",
+          "longName": "AppService",
+          "fullName": "tempestdx.app.v1.AppService",
+          "description": "",
+          "methods": [
+            {
+              "name": "Describe",
+              "description": "Returns information about what the app supports.",
+              "requestType": "DescribeRequest",
+              "requestLongType": "DescribeRequest",
+              "requestFullType": "tempestdx.app.v1.DescribeRequest",
+              "requestStreaming": false,
+              "responseType": "DescribeResponse",
+              "responseLongType": "DescribeResponse",
+              "responseFullType": "tempestdx.app.v1.DescribeResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "HealthCheck",
+              "description": "Health check endpoint",
+              "requestType": "HealthCheckRequest",
+              "requestLongType": "HealthCheckRequest",
+              "requestFullType": "tempestdx.app.v1.HealthCheckRequest",
+              "requestStreaming": false,
+              "responseType": "HealthCheckResponse",
+              "responseLongType": "HealthCheckResponse",
+              "responseFullType": "tempestdx.app.v1.HealthCheckResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "ExecuteResourceOperation",
+              "description": "Methods for executing operations on Resources.\nCreate, Read, Update, or Delete a Resource.",
+              "requestType": "ExecuteResourceOperationRequest",
+              "requestLongType": "ExecuteResourceOperationRequest",
+              "requestFullType": "tempestdx.app.v1.ExecuteResourceOperationRequest",
+              "requestStreaming": false,
+              "responseType": "ExecuteResourceOperationResponse",
+              "responseLongType": "ExecuteResourceOperationResponse",
+              "responseFullType": "tempestdx.app.v1.ExecuteResourceOperationResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "ListResources",
+              "description": "List Resources of a given type in the external system.",
+              "requestType": "ListResourcesRequest",
+              "requestLongType": "ListResourcesRequest",
+              "requestFullType": "tempestdx.app.v1.ListResourcesRequest",
+              "requestStreaming": false,
+              "responseType": "ListResourcesResponse",
+              "responseLongType": "ListResourcesResponse",
+              "responseFullType": "tempestdx.app.v1.ListResourcesResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "ExecuteResourceAction",
+              "description": "Execute an action on a Resource, as defined by the app.",
+              "requestType": "ExecuteResourceActionRequest",
+              "requestLongType": "ExecuteResourceActionRequest",
+              "requestFullType": "tempestdx.app.v1.ExecuteResourceActionRequest",
+              "requestStreaming": false,
+              "responseType": "ExecuteResourceActionResponse",
+              "responseLongType": "ExecuteResourceActionResponse",
+              "responseFullType": "tempestdx.app.v1.ExecuteResourceActionResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scalarValueTypes": [
+    {
+      "protoType": "double",
+      "notes": "",
+      "cppType": "double",
+      "csType": "double",
+      "goType": "float64",
+      "javaType": "double",
+      "phpType": "float",
+      "pythonType": "float",
+      "rubyType": "Float"
+    },
+    {
+      "protoType": "float",
+      "notes": "",
+      "cppType": "float",
+      "csType": "float",
+      "goType": "float32",
+      "javaType": "float",
+      "phpType": "float",
+      "pythonType": "float",
+      "rubyType": "Float"
+    },
+    {
+      "protoType": "int32",
+      "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.",
+      "cppType": "int32",
+      "csType": "int",
+      "goType": "int32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "int64",
+      "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.",
+      "cppType": "int64",
+      "csType": "long",
+      "goType": "int64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum"
+    },
+    {
+      "protoType": "uint32",
+      "notes": "Uses variable-length encoding.",
+      "cppType": "uint32",
+      "csType": "uint",
+      "goType": "uint32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int/long",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "uint64",
+      "notes": "Uses variable-length encoding.",
+      "cppType": "uint64",
+      "csType": "ulong",
+      "goType": "uint64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "sint32",
+      "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.",
+      "cppType": "int32",
+      "csType": "int",
+      "goType": "int32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "sint64",
+      "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.",
+      "cppType": "int64",
+      "csType": "long",
+      "goType": "int64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum"
+    },
+    {
+      "protoType": "fixed32",
+      "notes": "Always four bytes. More efficient than uint32 if values are often greater than 2^28.",
+      "cppType": "uint32",
+      "csType": "uint",
+      "goType": "uint32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "fixed64",
+      "notes": "Always eight bytes. More efficient than uint64 if values are often greater than 2^56.",
+      "cppType": "uint64",
+      "csType": "ulong",
+      "goType": "uint64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum"
+    },
+    {
+      "protoType": "sfixed32",
+      "notes": "Always four bytes.",
+      "cppType": "int32",
+      "csType": "int",
+      "goType": "int32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "sfixed64",
+      "notes": "Always eight bytes.",
+      "cppType": "int64",
+      "csType": "long",
+      "goType": "int64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum"
+    },
+    {
+      "protoType": "bool",
+      "notes": "",
+      "cppType": "bool",
+      "csType": "bool",
+      "goType": "bool",
+      "javaType": "boolean",
+      "phpType": "boolean",
+      "pythonType": "boolean",
+      "rubyType": "TrueClass/FalseClass"
+    },
+    {
+      "protoType": "string",
+      "notes": "A string must always contain UTF-8 encoded or 7-bit ASCII text.",
+      "cppType": "string",
+      "csType": "string",
+      "goType": "string",
+      "javaType": "String",
+      "phpType": "string",
+      "pythonType": "str/unicode",
+      "rubyType": "String (UTF-8)"
+    },
+    {
+      "protoType": "bytes",
+      "notes": "May contain any arbitrary sequence of bytes.",
+      "cppType": "string",
+      "csType": "ByteString",
+      "goType": "[]byte",
+      "javaType": "ByteString",
+      "phpType": "string",
+      "pythonType": "str",
+      "rubyType": "String (ASCII-8BIT)"
+    }
+  ]
+}
