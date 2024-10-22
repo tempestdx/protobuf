@@ -1,0 +1,21 @@
+name: Buf CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  buf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-action@v1
+        with:
+          push: false
+          archive: false
+      - name: check generate
+        run: set -ue; buf generate; git diff --quiet || { echo "run 'buf generate'"; exit 1; }
