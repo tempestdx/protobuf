@@ -10,6 +10,44 @@
       "hasServices": true,
       "enums": [
         {
+          "name": "EnvironemntVariableType",
+          "longName": "EnvironemntVariableType",
+          "fullName": "tempestdx.app.v1.EnvironemntVariableType",
+          "description": "",
+          "values": [
+            {
+              "name": "ENVIRONEMNT_VARIABLE_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "ENVIRONEMNT_VARIABLE_TYPE_VAR",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "ENVIRONEMNT_VARIABLE_TYPE_SECRET",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "ENVIRONEMNT_VARIABLE_TYPE_CERTIFICATE",
+              "number": "3",
+              "description": ""
+            },
+            {
+              "name": "ENVIRONEMNT_VARIABLE_TYPE_PRIVATE_KEY",
+              "number": "4",
+              "description": ""
+            },
+            {
+              "name": "ENVIRONEMNT_VARIABLE_TYPE_PUBLIC_KEY",
+              "number": "5",
+              "description": ""
+            }
+          ]
+        },
+        {
           "name": "HealthCheckStatus",
           "longName": "HealthCheckStatus",
           "fullName": "tempestdx.app.v1.HealthCheckStatus",
@@ -287,6 +325,54 @@
               "type": "ResourceDefinition",
               "longType": "ResourceDefinition",
               "fullType": "tempestdx.app.v1.ResourceDefinition",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "EnvironemntVariable",
+          "longName": "EnvironemntVariable",
+          "fullName": "tempestdx.app.v1.EnvironemntVariable",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "The name of the environment variable.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "The value of the environment variable.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "type",
+              "description": "The type of the environment variable.",
+              "label": "",
+              "type": "EnvironemntVariableType",
+              "longType": "EnvironemntVariableType",
+              "fullType": "tempestdx.app.v1.EnvironemntVariableType",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -827,6 +913,18 @@
               "type": "Struct",
               "longType": "google.protobuf.Struct",
               "fullType": "google.protobuf.Struct",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "environment_variables",
+              "description": "The environment variables of the resource.",
+              "label": "repeated",
+              "type": "EnvironemntVariable",
+              "longType": "EnvironemntVariable",
+              "fullType": "tempestdx.app.v1.EnvironemntVariable",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
