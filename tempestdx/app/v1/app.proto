@@ -161,6 +161,24 @@ enum ResourceOperation {
   RESOURCE_OPERATION_READ = 4;
 }
 
+enum EnvironmentVariableType {
+  ENVIRONMENT_VARIABLE_TYPE_UNSPECIFIED = 0;
+  ENVIRONMENT_VARIABLE_TYPE_VAR = 1;
+  ENVIRONMENT_VARIABLE_TYPE_SECRET = 2;
+  ENVIRONMENT_VARIABLE_TYPE_CERTIFICATE = 3;
+  ENVIRONMENT_VARIABLE_TYPE_PRIVATE_KEY = 4;
+  ENVIRONMENT_VARIABLE_TYPE_PUBLIC_KEY = 5;
+}
+
+message EnvironemntVariable {
+  // The name of the environment variable.
+  string key = 1;
+  // The value of the environment variable.
+  string value = 2;
+  // The type of the environment variable.
+  EnvironmentVariableType type = 3;
+}
+
 message Resource {
   // The unique type of the resource.
   string type = 1;
@@ -184,6 +202,8 @@ message ExecuteResourceOperationRequest {
   ResourceOperation operation = 3;
   // The input for the operation, if any.
   google.protobuf.Struct input = 4;
+  // The environment variables of the resource.
+  repeated EnvironemntVariable environment_variables = 5;
 }
 
 message ExecuteResourceOperationResponse {
@@ -200,6 +220,8 @@ message ExecuteResourceActionRequest {
   string action = 3;
   // The input for the action, if any.
   google.protobuf.Struct input = 4;
+  // The environment variables of the resource.
+  repeated EnvironemntVariable environment_variables = 5;
 }
 
 message ExecuteResourceActionResponse {
