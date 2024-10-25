@@ -10,38 +10,38 @@
       "hasServices": true,
       "enums": [
         {
-          "name": "EnvironemntVariableType",
-          "longName": "EnvironemntVariableType",
-          "fullName": "tempestdx.app.v1.EnvironemntVariableType",
+          "name": "EnvironmentVariableType",
+          "longName": "EnvironmentVariableType",
+          "fullName": "tempestdx.app.v1.EnvironmentVariableType",
           "description": "",
           "values": [
             {
-              "name": "ENVIRONEMNT_VARIABLE_TYPE_UNSPECIFIED",
+              "name": "ENVIRONMENT_VARIABLE_TYPE_UNSPECIFIED",
               "number": "0",
               "description": ""
             },
             {
-              "name": "ENVIRONEMNT_VARIABLE_TYPE_VAR",
+              "name": "ENVIRONMENT_VARIABLE_TYPE_VAR",
               "number": "1",
               "description": ""
             },
             {
-              "name": "ENVIRONEMNT_VARIABLE_TYPE_SECRET",
+              "name": "ENVIRONMENT_VARIABLE_TYPE_SECRET",
               "number": "2",
               "description": ""
             },
             {
-              "name": "ENVIRONEMNT_VARIABLE_TYPE_CERTIFICATE",
+              "name": "ENVIRONMENT_VARIABLE_TYPE_CERTIFICATE",
               "number": "3",
               "description": ""
             },
             {
-              "name": "ENVIRONEMNT_VARIABLE_TYPE_PRIVATE_KEY",
+              "name": "ENVIRONMENT_VARIABLE_TYPE_PRIVATE_KEY",
               "number": "4",
               "description": ""
             },
             {
-              "name": "ENVIRONEMNT_VARIABLE_TYPE_PUBLIC_KEY",
+              "name": "ENVIRONMENT_VARIABLE_TYPE_PUBLIC_KEY",
               "number": "5",
               "description": ""
             }
@@ -370,9 +370,9 @@
               "name": "type",
               "description": "The type of the environment variable.",
               "label": "",
-              "type": "EnvironemntVariableType",
-              "longType": "EnvironemntVariableType",
-              "fullType": "tempestdx.app.v1.EnvironemntVariableType",
+              "type": "EnvironmentVariableType",
+              "longType": "EnvironmentVariableType",
+              "fullType": "tempestdx.app.v1.EnvironmentVariableType",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

@@ -161,13 +161,13 @@ enum ResourceOperation {
   RESOURCE_OPERATION_READ = 4;
 }
 
-enum EnvironemntVariableType {
-  ENVIRONEMNT_VARIABLE_TYPE_UNSPECIFIED = 0;
-  ENVIRONEMNT_VARIABLE_TYPE_VAR = 1;
-  ENVIRONEMNT_VARIABLE_TYPE_SECRET = 2;
-  ENVIRONEMNT_VARIABLE_TYPE_CERTIFICATE = 3;
-  ENVIRONEMNT_VARIABLE_TYPE_PRIVATE_KEY = 4;
-  ENVIRONEMNT_VARIABLE_TYPE_PUBLIC_KEY = 5;
+enum EnvironmentVariableType {
+  ENVIRONMENT_VARIABLE_TYPE_UNSPECIFIED = 0;
+  ENVIRONMENT_VARIABLE_TYPE_VAR = 1;
+  ENVIRONMENT_VARIABLE_TYPE_SECRET = 2;
+  ENVIRONMENT_VARIABLE_TYPE_CERTIFICATE = 3;
+  ENVIRONMENT_VARIABLE_TYPE_PRIVATE_KEY = 4;
+  ENVIRONMENT_VARIABLE_TYPE_PUBLIC_KEY = 5;
 }
 
 message EnvironemntVariable {
@@ -176,7 +176,7 @@ message EnvironemntVariable {
   // The value of the environment variable.
   string value = 2;
   // The type of the environment variable.
-  EnvironemntVariableType type = 3;
+  EnvironmentVariableType type = 3;
 }
 
 message Resource {
