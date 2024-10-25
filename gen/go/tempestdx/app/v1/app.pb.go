@@ -1009,7 +1009,7 @@ func (x *Owner) GetType() OwnerType {
 	return OwnerType_OWNER_TYPE_UNSPECIFIED
 }
 
-type EnvironemntVariable struct {
+type EnvironmentVariable struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -1022,20 +1022,20 @@ type EnvironemntVariable struct {
 	Type EnvironmentVariableType `protobuf:"varint,3,opt,name=type,proto3,enum=tempestdx.app.v1.EnvironmentVariableType" json:"type,omitempty"`
 }
 
-func (x *EnvironemntVariable) Reset() {
-	*x = EnvironemntVariable{}
+func (x *EnvironmentVariable) Reset() {
+	*x = EnvironmentVariable{}
 	mi := &file_tempestdx_app_v1_app_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *EnvironemntVariable) String() string {
+func (x *EnvironmentVariable) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EnvironemntVariable) ProtoMessage() {}
+func (*EnvironmentVariable) ProtoMessage() {}
 
-func (x *EnvironemntVariable) ProtoReflect() protoreflect.Message {
+func (x *EnvironmentVariable) ProtoReflect() protoreflect.Message {
 	mi := &file_tempestdx_app_v1_app_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1047,26 +1047,26 @@ func (x *EnvironemntVariable) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EnvironemntVariable.ProtoReflect.Descriptor instead.
-func (*EnvironemntVariable) Descriptor() ([]byte, []int) {
+// Deprecated: Use EnvironmentVariable.ProtoReflect.Descriptor instead.
+func (*EnvironmentVariable) Descriptor() ([]byte, []int) {
 	return file_tempestdx_app_v1_app_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *EnvironemntVariable) GetKey() string {
+func (x *EnvironmentVariable) GetKey() string {
 	if x != nil {
 		return x.Key
 	}
 	return ""
 }
 
-func (x *EnvironemntVariable) GetValue() string {
+func (x *EnvironmentVariable) GetValue() string {
 	if x != nil {
 		return x.Value
 	}
 	return ""
 }
 
-func (x *EnvironemntVariable) GetType() EnvironmentVariableType {
+func (x *EnvironmentVariable) GetType() EnvironmentVariableType {
 	if x != nil {
 		return x.Type
 	}
@@ -1170,7 +1170,7 @@ type ExecuteResourceOperationRequest struct {
 	// The input for the operation, if any.
 	Input *structpb.Struct `protobuf:"bytes,4,opt,name=input,proto3" json:"input,omitempty"`
 	// The environment variables of the resource.
-	EnvironmentVariables []*EnvironemntVariable `protobuf:"bytes,5,rep,name=environment_variables,json=environmentVariables,proto3" json:"environment_variables,omitempty"`
+	EnvironmentVariables []*EnvironmentVariable `protobuf:"bytes,5,rep,name=environment_variables,json=environmentVariables,proto3" json:"environment_variables,omitempty"`
 }
 
 func (x *ExecuteResourceOperationRequest) Reset() {
@@ -1231,7 +1231,7 @@ func (x *ExecuteResourceOperationRequest) GetInput() *structpb.Struct {
 	return nil
 }
 
-func (x *ExecuteResourceOperationRequest) GetEnvironmentVariables() []*EnvironemntVariable {
+func (x *ExecuteResourceOperationRequest) GetEnvironmentVariables() []*EnvironmentVariable {
 	if x != nil {
 		return x.EnvironmentVariables
 	}
@@ -1298,7 +1298,7 @@ type ExecuteResourceActionRequest struct {
 	// The input for the action, if any.
 	Input *structpb.Struct `protobuf:"bytes,4,opt,name=input,proto3" json:"input,omitempty"`
 	// The environment variables of the resource.
-	EnvironmentVariables []*EnvironemntVariable `protobuf:"bytes,5,rep,name=environment_variables,json=environmentVariables,proto3" json:"environment_variables,omitempty"`
+	EnvironmentVariables []*EnvironmentVariable `protobuf:"bytes,5,rep,name=environment_variables,json=environmentVariables,proto3" json:"environment_variables,omitempty"`
 }
 
 func (x *ExecuteResourceActionRequest) Reset() {
@@ -1359,7 +1359,7 @@ func (x *ExecuteResourceActionRequest) GetInput() *structpb.Struct {
 	return nil
 }
 
-func (x *ExecuteResourceActionRequest) GetEnvironmentVariables() []*EnvironemntVariable {
+func (x *ExecuteResourceActionRequest) GetEnvironmentVariables() []*EnvironmentVariable {
 	if x != nil {
 		return x.EnvironmentVariables
 	}
@@ -1645,7 +1645,7 @@ var file_tempestdx_app_v1_app_proto_rawDesc = []byte{
 	0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1b, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x73, 0x74,
 	0x64, 0x78, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x54,
 	0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x7c, 0x0a, 0x13, 0x45, 0x6e, 0x76,
-	0x69, 0x72, 0x6f, 0x6e, 0x65, 0x6d, 0x6e, 0x74, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65,
+	0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65,
 	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
 	0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x3d, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65,
@@ -1685,7 +1685,7 @@ var file_tempestdx_app_v1_app_proto_rawDesc = []byte{
 	0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x76, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c,
 	0x65, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x65,
 	0x73, 0x74, 0x64, 0x78, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x6e, 0x76, 0x69,
-	0x72, 0x6f, 0x6e, 0x65, 0x6d, 0x6e, 0x74, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x52,
+	0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x52,
 	0x14, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x61, 0x72, 0x69,
 	0x61, 0x62, 0x6c, 0x65, 0x73, 0x22, 0x5a, 0x0a, 0x20, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x65,
 	0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f,
@@ -1710,7 +1710,7 @@ var file_tempestdx_app_v1_app_proto_rawDesc = []byte{
 	0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x76, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c,
 	0x65, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x65,
 	0x73, 0x74, 0x64, 0x78, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x6e, 0x76, 0x69,
-	0x72, 0x6f, 0x6e, 0x65, 0x6d, 0x6e, 0x74, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x52,
+	0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x52,
 	0x14, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x56, 0x61, 0x72, 0x69,
 	0x61, 0x62, 0x6c, 0x65, 0x73, 0x22, 0x50, 0x0a, 0x1d, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x65,
 	0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x41, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65,
@@ -1884,7 +1884,7 @@ var file_tempestdx_app_v1_app_proto_goTypes = []any{
 	(*ResourceDefinition)(nil),               // 12: tempestdx.app.v1.ResourceDefinition
 	(*Metadata)(nil),                         // 13: tempestdx.app.v1.Metadata
 	(*Owner)(nil),                            // 14: tempestdx.app.v1.Owner
-	(*EnvironemntVariable)(nil),              // 15: tempestdx.app.v1.EnvironemntVariable
+	(*EnvironmentVariable)(nil),              // 15: tempestdx.app.v1.EnvironmentVariable
 	(*Resource)(nil),                         // 16: tempestdx.app.v1.Resource
 	(*ExecuteResourceOperationRequest)(nil),  // 17: tempestdx.app.v1.ExecuteResourceOperationRequest
 	(*ExecuteResourceOperationResponse)(nil), // 18: tempestdx.app.v1.ExecuteResourceOperationResponse
@@ -1909,19 +1909,19 @@ var file_tempestdx_app_v1_app_proto_depIdxs = []int32{
 	14, // 11: tempestdx.app.v1.Metadata.owners:type_name -> tempestdx.app.v1.Owner
 	14, // 12: tempestdx.app.v1.Metadata.author:type_name -> tempestdx.app.v1.Owner
 	3,  // 13: tempestdx.app.v1.Owner.type:type_name -> tempestdx.app.v1.OwnerType
-	5,  // 14: tempestdx.app.v1.EnvironemntVariable.type:type_name -> tempestdx.app.v1.EnvironmentVariableType
+	5,  // 14: tempestdx.app.v1.EnvironmentVariable.type:type_name -> tempestdx.app.v1.EnvironmentVariableType
 	10, // 15: tempestdx.app.v1.Resource.links:type_name -> tempestdx.app.v1.Link
 	23, // 16: tempestdx.app.v1.Resource.properties:type_name -> google.protobuf.Struct
 	13, // 17: tempestdx.app.v1.ExecuteResourceOperationRequest.metadata:type_name -> tempestdx.app.v1.Metadata
 	16, // 18: tempestdx.app.v1.ExecuteResourceOperationRequest.resource:type_name -> tempestdx.app.v1.Resource
 	4,  // 19: tempestdx.app.v1.ExecuteResourceOperationRequest.operation:type_name -> tempestdx.app.v1.ResourceOperation
 	23, // 20: tempestdx.app.v1.ExecuteResourceOperationRequest.input:type_name -> google.protobuf.Struct
-	15, // 21: tempestdx.app.v1.ExecuteResourceOperationRequest.environment_variables:type_name -> tempestdx.app.v1.EnvironemntVariable
+	15, // 21: tempestdx.app.v1.ExecuteResourceOperationRequest.environment_variables:type_name -> tempestdx.app.v1.EnvironmentVariable
 	16, // 22: tempestdx.app.v1.ExecuteResourceOperationResponse.resource:type_name -> tempestdx.app.v1.Resource
 	13, // 23: tempestdx.app.v1.ExecuteResourceActionRequest.metadata:type_name -> tempestdx.app.v1.Metadata
 	16, // 24: tempestdx.app.v1.ExecuteResourceActionRequest.resource:type_name -> tempestdx.app.v1.Resource
 	23, // 25: tempestdx.app.v1.ExecuteResourceActionRequest.input:type_name -> google.protobuf.Struct
-	15, // 26: tempestdx.app.v1.ExecuteResourceActionRequest.environment_variables:type_name -> tempestdx.app.v1.EnvironemntVariable
+	15, // 26: tempestdx.app.v1.ExecuteResourceActionRequest.environment_variables:type_name -> tempestdx.app.v1.EnvironmentVariable
 	23, // 27: tempestdx.app.v1.ExecuteResourceActionResponse.output:type_name -> google.protobuf.Struct
 	13, // 28: tempestdx.app.v1.ListResourcesRequest.metadata:type_name -> tempestdx.app.v1.Metadata
 	16, // 29: tempestdx.app.v1.ListResourcesRequest.resource:type_name -> tempestdx.app.v1.Resource

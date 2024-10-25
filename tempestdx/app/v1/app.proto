@@ -170,7 +170,7 @@ enum EnvironmentVariableType {
   ENVIRONMENT_VARIABLE_TYPE_PUBLIC_KEY = 5;
 }
 
-message EnvironemntVariable {
+message EnvironmentVariable {
   // The name of the environment variable.
   string key = 1;
   // The value of the environment variable.
@@ -203,7 +203,7 @@ message ExecuteResourceOperationRequest {
   // The input for the operation, if any.
   google.protobuf.Struct input = 4;
   // The environment variables of the resource.
-  repeated EnvironemntVariable environment_variables = 5;
+  repeated EnvironmentVariable environment_variables = 5;
 }
 
 message ExecuteResourceOperationResponse {
@@ -221,7 +221,7 @@ message ExecuteResourceActionRequest {
   // The input for the action, if any.
   google.protobuf.Struct input = 4;
   // The environment variables of the resource.
-  repeated EnvironemntVariable environment_variables = 5;
+  repeated EnvironmentVariable environment_variables = 5;
 }
 
 message ExecuteResourceActionResponse {
