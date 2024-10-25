@@ -191,8 +191,6 @@ message Resource {
   // The properties of the resource. This will be validated against the
   // properties_schema of the ResourceDefinition.
   google.protobuf.Struct properties = 5;
-  // The environment variables of the resource.
-  repeated EnvironemntVariable environment_variables = 6;
 }
 
 message ExecuteResourceOperationRequest {
@@ -204,6 +202,8 @@ message ExecuteResourceOperationRequest {
   ResourceOperation operation = 3;
   // The input for the operation, if any.
   google.protobuf.Struct input = 4;
+  // The environment variables of the resource.
+  repeated EnvironemntVariable environment_variables = 5;
 }
 
 message ExecuteResourceOperationResponse {
@@ -220,6 +220,8 @@ message ExecuteResourceActionRequest {
   string action = 3;
   // The input for the action, if any.
   google.protobuf.Struct input = 4;
+  // The environment variables of the resource.
+  repeated EnvironemntVariable environment_variables = 5;
 }
 
 message ExecuteResourceActionResponse {
