@@ -20,7 +20,13 @@ service AppService {
 
   // Execute an action on a Resource, as defined by the app.
   rpc ExecuteResourceAction(ExecuteResourceActionRequest) returns (ExecuteResourceActionResponse) {}
+
+  // Shutdown the app.
+  rpc Shutdown(ShutdownRequest) returns (ShutdownResponse) {}
 }
+
+message ShutdownRequest {}
+message ShutdownResponse {}
 
 message DescribeRequest {}
 message DescribeResponse {

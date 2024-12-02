@@ -1147,6 +1147,28 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "ShutdownRequest",
+          "longName": "ShutdownRequest",
+          "fullName": "tempestdx.app.v1.ShutdownRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "ShutdownResponse",
+          "longName": "ShutdownResponse",
+          "fullName": "tempestdx.app.v1.ShutdownResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
         }
       ],
       "services": [
@@ -1214,6 +1236,18 @@
               "responseType": "ExecuteResourceActionResponse",
               "responseLongType": "ExecuteResourceActionResponse",
               "responseFullType": "tempestdx.app.v1.ExecuteResourceActionResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Shutdown",
+              "description": "Shutdown the app.",
+              "requestType": "ShutdownRequest",
+              "requestLongType": "ShutdownRequest",
+              "requestFullType": "tempestdx.app.v1.ShutdownRequest",
+              "requestStreaming": false,
+              "responseType": "ShutdownResponse",
+              "responseLongType": "ShutdownResponse",
+              "responseFullType": "tempestdx.app.v1.ShutdownResponse",
               "responseStreaming": false
             }
           ]

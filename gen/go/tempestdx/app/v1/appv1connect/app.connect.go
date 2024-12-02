@@ -46,6 +46,8 @@ const (
 	// AppServiceExecuteResourceActionProcedure is the fully-qualified name of the AppService's
 	// ExecuteResourceAction RPC.
 	AppServiceExecuteResourceActionProcedure = "/tempestdx.app.v1.AppService/ExecuteResourceAction"
+	// AppServiceShutdownProcedure is the fully-qualified name of the AppService's Shutdown RPC.
+	AppServiceShutdownProcedure = "/tempestdx.app.v1.AppService/Shutdown"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -56,6 +58,7 @@ var (
 	appServiceExecuteResourceOperationMethodDescriptor = appServiceServiceDescriptor.Methods().ByName("ExecuteResourceOperation")
 	appServiceListResourcesMethodDescriptor            = appServiceServiceDescriptor.Methods().ByName("ListResources")
 	appServiceExecuteResourceActionMethodDescriptor    = appServiceServiceDescriptor.Methods().ByName("ExecuteResourceAction")
+	appServiceShutdownMethodDescriptor                 = appServiceServiceDescriptor.Methods().ByName("Shutdown")
 )
 
 // AppServiceClient is a client for the tempestdx.app.v1.AppService service.
@@ -71,6 +74,8 @@ type AppServiceClient interface {
 	ListResources(context.Context, *connect.Request[v1.ListResourcesRequest]) (*connect.Response[v1.ListResourcesResponse], error)
 	// Execute an action on a Resource, as defined by the app.
 	ExecuteResourceAction(context.Context, *connect.Request[v1.ExecuteResourceActionRequest]) (*connect.Response[v1.ExecuteResourceActionResponse], error)
+	// Shutdown the app.
+	Shutdown(context.Context, *connect.Request[v1.ShutdownRequest]) (*connect.Response[v1.ShutdownResponse], error)
 }
 
 // NewAppServiceClient constructs a client for the tempestdx.app.v1.AppService service. By default,
@@ -113,6 +118,12 @@ func NewAppServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(appServiceExecuteResourceActionMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		shutdown: connect.NewClient[v1.ShutdownRequest, v1.ShutdownResponse](
+			httpClient,
+			baseURL+AppServiceShutdownProcedure,
+			connect.WithSchema(appServiceShutdownMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -123,6 +134,7 @@ type appServiceClient struct {
 	executeResourceOperation *connect.Client[v1.ExecuteResourceOperationRequest, v1.ExecuteResourceOperationResponse]
 	listResources            *connect.Client[v1.ListResourcesRequest, v1.ListResourcesResponse]
 	executeResourceAction    *connect.Client[v1.ExecuteResourceActionRequest, v1.ExecuteResourceActionResponse]
+	shutdown                 *connect.Client[v1.ShutdownRequest, v1.ShutdownResponse]
 }
 
 // Describe calls tempestdx.app.v1.AppService.Describe.
@@ -150,6 +162,11 @@ func (c *appServiceClient) ExecuteResourceAction(ctx context.Context, req *conne
 	return c.executeResourceAction.CallUnary(ctx, req)
 }
 
+// Shutdown calls tempestdx.app.v1.AppService.Shutdown.
+func (c *appServiceClient) Shutdown(ctx context.Context, req *connect.Request[v1.ShutdownRequest]) (*connect.Response[v1.ShutdownResponse], error) {
+	return c.shutdown.CallUnary(ctx, req)
+}
+
 // AppServiceHandler is an implementation of the tempestdx.app.v1.AppService service.
 type AppServiceHandler interface {
 	// Returns information about what the app supports.
@@ -163,6 +180,8 @@ type AppServiceHandler interface {
 	ListResources(context.Context, *connect.Request[v1.ListResourcesRequest]) (*connect.Response[v1.ListResourcesResponse], error)
 	// Execute an action on a Resource, as defined by the app.
 	ExecuteResourceAction(context.Context, *connect.Request[v1.ExecuteResourceActionRequest]) (*connect.Response[v1.ExecuteResourceActionResponse], error)
+	// Shutdown the app.
+	Shutdown(context.Context, *connect.Request[v1.ShutdownRequest]) (*connect.Response[v1.ShutdownResponse], error)
 }
 
 // NewAppServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -201,6 +220,12 @@ func NewAppServiceHandler(svc AppServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(appServiceExecuteResourceActionMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	appServiceShutdownHandler := connect.NewUnaryHandler(
+		AppServiceShutdownProcedure,
+		svc.Shutdown,
+		connect.WithSchema(appServiceShutdownMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/tempestdx.app.v1.AppService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case AppServiceDescribeProcedure:
@@ -213,6 +238,8 @@ func NewAppServiceHandler(svc AppServiceHandler, opts ...connect.HandlerOption) 
 			appServiceListResourcesHandler.ServeHTTP(w, r)
 		case AppServiceExecuteResourceActionProcedure:
 			appServiceExecuteResourceActionHandler.ServeHTTP(w, r)
+		case AppServiceShutdownProcedure:
+			appServiceShutdownHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -240,4 +267,8 @@ func (UnimplementedAppServiceHandler) ListResources(context.Context, *connect.Re
 
 func (UnimplementedAppServiceHandler) ExecuteResourceAction(context.Context, *connect.Request[v1.ExecuteResourceActionRequest]) (*connect.Response[v1.ExecuteResourceActionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("tempestdx.app.v1.AppService.ExecuteResourceAction is not implemented"))
+}
+
+func (UnimplementedAppServiceHandler) Shutdown(context.Context, *connect.Request[v1.ShutdownRequest]) (*connect.Response[v1.ShutdownResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("tempestdx.app.v1.AppService.Shutdown is not implemented"))
 }
