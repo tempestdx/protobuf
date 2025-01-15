@@ -48,16 +48,6 @@ const (
 	AppServiceExecuteResourceActionProcedure = "/tempestdx.app.v1.AppService/ExecuteResourceAction"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	appServiceServiceDescriptor                        = v1.File_tempestdx_app_v1_app_proto.Services().ByName("AppService")
-	appServiceDescribeMethodDescriptor                 = appServiceServiceDescriptor.Methods().ByName("Describe")
-	appServiceHealthCheckMethodDescriptor              = appServiceServiceDescriptor.Methods().ByName("HealthCheck")
-	appServiceExecuteResourceOperationMethodDescriptor = appServiceServiceDescriptor.Methods().ByName("ExecuteResourceOperation")
-	appServiceListResourcesMethodDescriptor            = appServiceServiceDescriptor.Methods().ByName("ListResources")
-	appServiceExecuteResourceActionMethodDescriptor    = appServiceServiceDescriptor.Methods().ByName("ExecuteResourceAction")
-)
-
 // AppServiceClient is a client for the tempestdx.app.v1.AppService service.
 type AppServiceClient interface {
 	// Returns information about what the app supports.
@@ -82,35 +72,36 @@ type AppServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewAppServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) AppServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	appServiceMethods := v1.File_tempestdx_app_v1_app_proto.Services().ByName("AppService").Methods()
 	return &appServiceClient{
 		describe: connect.NewClient[v1.DescribeRequest, v1.DescribeResponse](
 			httpClient,
 			baseURL+AppServiceDescribeProcedure,
-			connect.WithSchema(appServiceDescribeMethodDescriptor),
+			connect.WithSchema(appServiceMethods.ByName("Describe")),
 			connect.WithClientOptions(opts...),
 		),
 		healthCheck: connect.NewClient[v1.HealthCheckRequest, v1.HealthCheckResponse](
 			httpClient,
 			baseURL+AppServiceHealthCheckProcedure,
-			connect.WithSchema(appServiceHealthCheckMethodDescriptor),
+			connect.WithSchema(appServiceMethods.ByName("HealthCheck")),
 			connect.WithClientOptions(opts...),
 		),
 		executeResourceOperation: connect.NewClient[v1.ExecuteResourceOperationRequest, v1.ExecuteResourceOperationResponse](
 			httpClient,
 			baseURL+AppServiceExecuteResourceOperationProcedure,
-			connect.WithSchema(appServiceExecuteResourceOperationMethodDescriptor),
+			connect.WithSchema(appServiceMethods.ByName("ExecuteResourceOperation")),
 			connect.WithClientOptions(opts...),
 		),
 		listResources: connect.NewClient[v1.ListResourcesRequest, v1.ListResourcesResponse](
 			httpClient,
 			baseURL+AppServiceListResourcesProcedure,
-			connect.WithSchema(appServiceListResourcesMethodDescriptor),
+			connect.WithSchema(appServiceMethods.ByName("ListResources")),
 			connect.WithClientOptions(opts...),
 		),
 		executeResourceAction: connect.NewClient[v1.ExecuteResourceActionRequest, v1.ExecuteResourceActionResponse](
 			httpClient,
 			baseURL+AppServiceExecuteResourceActionProcedure,
-			connect.WithSchema(appServiceExecuteResourceActionMethodDescriptor),
+			connect.WithSchema(appServiceMethods.ByName("ExecuteResourceAction")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -171,34 +162,35 @@ type AppServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewAppServiceHandler(svc AppServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	appServiceMethods := v1.File_tempestdx_app_v1_app_proto.Services().ByName("AppService").Methods()
 	appServiceDescribeHandler := connect.NewUnaryHandler(
 		AppServiceDescribeProcedure,
 		svc.Describe,
-		connect.WithSchema(appServiceDescribeMethodDescriptor),
+		connect.WithSchema(appServiceMethods.ByName("Describe")),
 		connect.WithHandlerOptions(opts...),
 	)
 	appServiceHealthCheckHandler := connect.NewUnaryHandler(
 		AppServiceHealthCheckProcedure,
 		svc.HealthCheck,
-		connect.WithSchema(appServiceHealthCheckMethodDescriptor),
+		connect.WithSchema(appServiceMethods.ByName("HealthCheck")),
 		connect.WithHandlerOptions(opts...),
 	)
 	appServiceExecuteResourceOperationHandler := connect.NewUnaryHandler(
 		AppServiceExecuteResourceOperationProcedure,
 		svc.ExecuteResourceOperation,
-		connect.WithSchema(appServiceExecuteResourceOperationMethodDescriptor),
+		connect.WithSchema(appServiceMethods.ByName("ExecuteResourceOperation")),
 		connect.WithHandlerOptions(opts...),
 	)
 	appServiceListResourcesHandler := connect.NewUnaryHandler(
 		AppServiceListResourcesProcedure,
 		svc.ListResources,
-		connect.WithSchema(appServiceListResourcesMethodDescriptor),
+		connect.WithSchema(appServiceMethods.ByName("ListResources")),
 		connect.WithHandlerOptions(opts...),
 	)
 	appServiceExecuteResourceActionHandler := connect.NewUnaryHandler(
 		AppServiceExecuteResourceActionProcedure,
 		svc.ExecuteResourceAction,
-		connect.WithSchema(appServiceExecuteResourceActionMethodDescriptor),
+		connect.WithSchema(appServiceMethods.ByName("ExecuteResourceAction")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/tempestdx.app.v1.AppService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
