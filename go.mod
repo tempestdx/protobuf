@@ -1,8 +1,8 @@
 module github.com/tempestdx/protobuf
 
-go 1.23.2
+go 1.24.0
 
 require (
-	connectrpc.com/connect v1.18.1
+	connectrpc.com/connect v1.19.0
 	google.golang.org/protobuf v1.36.9
 )
